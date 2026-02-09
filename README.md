@@ -65,3 +65,37 @@ Institución: Estación Experimental Agraria Vista Florida – INIA
 
 ## 📁 Estructura del repositorio
 
+
+## 📄 Publicación asociada (en preparación)
+
+Título provisional:
+
+"Evaluación de la adaptabilidad inicial de seis cultivares de ajo (Allium sativum L.) en condiciones de la costa norte del Perú"
+
+Estado: en desarrollo.
+
+---
+
+## 🔗 Relación con roadmap tecnológico
+
+Este experimento corresponde a la fase inicial del roadmap.
+
+Repositorio maestro:  
+https://github.com/elviarlo-code/ajo-tecnologia-2030
+
+Año: 2025  
+Nivel TRL estimado: 3–4
+
+---
+
+## 👥 Equipo
+
+- Responsable técnico: Víctor Ramírez  
+- Institución: INIA – EEA Vista Florida  
+- Programa: PN Hortalizas  
+
+---
+
+## 📝 Notas
+
+Este repositorio forma parte del proceso de generación de evidencia científica para el desarrollo de una tecnología regional de semilla de ajo.
