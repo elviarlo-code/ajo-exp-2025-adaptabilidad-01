@@ -14,8 +14,8 @@ Evaluar el comportamiento agronómico, rendimiento y adaptación inicial de seis
 
 ## 🧪 Material vegetal
 
-- 5 líneas avanzadas de ajo  
-- 1 cultivar testigo  
+- 3 cultivares comerciales de ajo  
+- 3 colecciones de ajo  
 
 (Total: 6 cultivares)
 
@@ -36,7 +36,7 @@ Institución: Estación Experimental Agraria Vista Florida – INIA
 - Número de bloques: (según Ficha 10)
 - Tratamientos: 6 cultivares
 - Unidad experimental: parcela por cultivar
-- Variables evaluadas: agronómicas, fenológicas y de rendimiento
+- Variables evaluadas: agronómicas y de rendimiento
 
 (Detalles completos en carpeta `/protocols`)
 
@@ -45,26 +45,38 @@ Institución: Estación Experimental Agraria Vista Florida – INIA
 ## 📊 Variables principales
 
 ### Variables de planta
-- Altura de planta
+- Tallo flora curvatura 
+- Tallo floral bulbillos
+- Follaje - porte
 - Número de hojas
+- Forma longitudinal
+- Posición de dientes-extremo de bulbo
+- Forma de la base
+- Dsictibución de dientes
+- Dientes experiores
 - Días a emergencia
 - Días a formación de bulbo
 
 ### Variables de rendimiento
+- Peso promedio de bulbo
 - Peso total por parcela
 - Rendimiento estimado (t/ha)
-- Número de bulbos comerciales
-- Peso promedio de bulbo
-
+- Número de dientes
+  
 ### Variables de calidad
-- Diámetro de bulbo
+- Longitud de bulbo
+- Ancho de bulbo
 - Uniformidad
 - Clasificación comercial
 
 ---
 
 ## 📁 Estructura del repositorio
-
+- 1. Protocolo
+  2. Data
+  3. Script
+  4. Figuras
+  5. Manuscrito
 
 ## 📄 Publicación asociada (en preparación)
 
@@ -84,7 +96,7 @@ Repositorio maestro:
 https://github.com/elviarlo-code/ajo-tecnologia-2030
 
 Año: 2025  
-Nivel TRL estimado: 3–4
+Nivel TRL estimado: 2–3
 
 ---
 
