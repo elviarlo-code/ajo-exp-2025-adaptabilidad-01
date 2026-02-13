@@ -42,7 +42,7 @@ El manejo del cultivo se realizó de acuerdo con las prácticas agronómicas rec
 ### Variables de calidad
 - Diámetro de bulbo
 - Uniformidad de bulbos
-- Clasificación comercial
+- Clasificación comercial, # Clasificación de calibre según Burba J.L., 2013
 
 ---
 
