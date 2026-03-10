@@ -14,8 +14,8 @@ Evaluar el comportamiento agronómico, rendimiento y adaptación inicial de seis
 
 ## 🧪 Material vegetal
 
-- 3 cultivares comerciales de ajo  
-- 3 colecciones de ajo  
+- 2 cultivares comerciales de ajo  (INIA 104 Ajo Blanco e INIA 105 Donajus)
+- 4 colecciones de ajo  (Kyan, Chino Criollo, Santeño, Cañetano)
 
 (Total: 6 cultivares)
 
