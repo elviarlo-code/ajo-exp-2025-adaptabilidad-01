@@ -1,0 +1,13 @@
+Resumen automático del PCA (medias por cultivar)
+==========================================================
+Varianza explicada por PC1: 73.86%
+Varianza explicada por PC2: 12.81%
+
+Variables con mayor contribución (|carga|) en PC1: ancho_bulbo_mm_clasif (+0.284), ancho_bulbo_mm (+0.283), peso_parcela_comercial_g_est (+0.283), rendimiento_comercial_tn_ha (+0.283), rendimiento_total_tn_ha (+0.276)
+Variables con mayor contribución (|carga|) en PC2: num_hojas (+0.579), prop_comercial_peso_muestra (-0.336), num_dientes (+0.331), n_com_muestreo (-0.281), prop_comercial_n_muestreo (-0.281)
+
+Interpretación agronómica sugerida:
+- PC1 resume un gradiente multivariado dominado por las variables con mayores cargas absolutas en dicho componente, útil para diferenciar cultivares según rasgos de crecimiento/rendimiento asociados a esas variables.
+- PC2 captura un patrón complementario e independiente de PC1, destacando la variación en los rasgos con mayor peso en este eje; esto ayuda a distinguir cultivares con perfiles agronómicos contrastantes.
+
+Nota: el signo (+/-) de la carga indica dirección de asociación dentro de cada componente.
