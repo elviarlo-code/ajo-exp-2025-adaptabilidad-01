@@ -152,3 +152,41 @@ python scripts/analisis_univariado.py
    - `results/anova_resultados.csv`
 
 El archivo de datos original no se modifica.
+
+---
+
+## 🧠 Análisis multivariado (PCA por cultivar)
+
+Se agregó el script `scripts/analisis_multivariado.py` para realizar un Análisis de Componentes Principales (PCA) sobre las **medias por cultivar** (no sobre parcelas individuales) a partir de:
+
+- `data/processed/parcelas_cuantitativas_sin_T5.csv`
+
+### Ejecución
+
+```bash
+python scripts/analisis_multivariado.py
+```
+
+### ¿Qué hace el script?
+
+1. Lee el archivo procesado sin T5.
+2. Selecciona automáticamente variables cuantitativas para PCA.
+3. Excluye columnas de identificación (`parcela`, `bloque`, `tratamiento_codigo`, `tratamiento_nombre`).
+4. Elimina variables no útiles (vacías, no numéricas o con varianza cero).
+5. Agrupa por `tratamiento_nombre` y calcula la media por cultivar.
+6. Estandariza variables con `StandardScaler` y ejecuta PCA (PC1 y PC2).
+7. Crea carpetas `results/` y `figures/` si no existen.
+
+### Archivos generados en `results/`
+
+- `results/pca_varianza_explicada.csv`
+- `results/pca_coordenadas_cultivares.csv`
+- `results/pca_cargas_variables.csv`
+- `results/pca_contribucion_variables.csv`
+- `results/pca_matriz_base_cultivares.csv`
+- `results/pca_resumen.txt`
+
+### Figuras generadas en `figures/`
+
+- `figures/pca_scatter_cultivares.png`
+- `figures/pca_biplot_cultivares.png`
