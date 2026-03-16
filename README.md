@@ -127,3 +127,28 @@ Esto conserva el archivo original y crea una versión filtrada en `data/processe
 ## 📝 Notas
 
 Este repositorio forma parte del proceso de generación de evidencia científica para el desarrollo de una tecnología regional de semilla de ajo.
+
+## 📈 Análisis univariado (ANOVA por variable)
+
+Se agregó el script `scripts/analisis_univariado.py` para realizar análisis univariado de las variables cuantitativas del experimento (excluyendo identificadores) a partir de:
+
+- `data/processed/parcelas_cuantitativas_sin_T5.csv`
+
+### Ejecución
+
+```bash
+python scripts/analisis_univariado.py
+```
+
+### ¿Qué hace el script?
+
+1. Detecta automáticamente variables cuantitativas.
+2. Excluye columnas de identificación: `parcela`, `bloque`, `tratamiento_codigo`, `tratamiento_nombre`.
+3. Calcula estadísticos descriptivos por tratamiento (`media`, `desviación estándar`, `mínimo`, `máximo`).
+4. Ejecuta ANOVA por variable con el modelo:
+   - `variable ~ C(tratamiento_nombre) + C(bloque)`
+5. Crea la carpeta `results/` si no existe y guarda:
+   - `results/descriptivos_por_tratamiento.csv`
+   - `results/anova_resultados.csv`
+
+El archivo de datos original no se modifica.
