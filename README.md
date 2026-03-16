@@ -108,6 +108,22 @@ Nivel TRL estimado: 2–3
 
 ---
 
+
+## 🧹 Limpieza de datos en terminal
+
+Para generar un archivo sin el tratamiento 5 (cultivar precoz), ejecuta:
+
+```bash
+python scripts/limpiar_tratamiento.py \
+  --input data/processed/parcelas_cuantitativas.csv \
+  --output data/processed/parcelas_cuantitativas_sin_T5.csv \
+  --tratamiento 5
+```
+
+Esto conserva el archivo original y crea una versión filtrada en `data/processed/parcelas_cuantitativas_sin_T5.csv`.
+
+---
+
 ## 📝 Notas
 
 Este repositorio forma parte del proceso de generación de evidencia científica para el desarrollo de una tecnología regional de semilla de ajo.
