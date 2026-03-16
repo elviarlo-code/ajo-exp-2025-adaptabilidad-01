@@ -1,0 +1,52 @@
+Resumen automático de clustering jerárquico (medias por cultivar)
+==================================================================
+Número de cultivares analizados: 5
+Variables incluidas en el análisis:
+  - n_com_muestreo
+  - prop_comercial_n_muestreo
+  - peso_conto_gr
+  - peso_muestra_total_g
+  - peso_muestra_com_g
+  - prop_comercial_peso_muestra
+  - peso_parcela_total_g_obs
+  - peso_parcela_comercial_g_est
+  - rendimiento_total_tn_ha
+  - rendimiento_comercial_tn_ha
+  - peso_bulbo_gr
+  - num_hojas
+  - longitud_bulbo_mm
+  - ancho_bulbo_mm
+  - num_dientes
+  - ancho_bulbo_mm_clasif
+
+Métrica de distancia: euclidiana
+Método de enlace: Ward
+
+Orden final de agrupamiento de cultivares:
+  - AJO KIYAN
+  - INIA 105 DONAJUS
+  - INIA 104 BLANCO
+  - AJO CANETANO
+  - AJO CHINO
+
+Cultivares más cercanos entre sí (menor distancia):
+  - AJO KIYAN ↔ INIA 105 DONAJUS: distancia euclidiana = 3.703
+  - AJO CANETANO ↔ AJO CHINO: distancia euclidiana = 3.766
+  - AJO CHINO ↔ INIA 104 BLANCO: distancia euclidiana = 4.856
+
+Descripción automática de perfiles por grupo (matriz estandarizada):
+
+Corte en k=2 grupos:
+- Grupo 1 (2 cultivares: AJO KIYAN, INIA 105 DONAJUS): altas -> sin variables marcadamente altas; bajas -> n_com_muestreo, prop_comercial_n_muestreo, rendimiento_comercial_tn_ha, peso_parcela_comercial_g_est, prop_comercial_peso_muestra.
+- Grupo 2 (3 cultivares: AJO CANETANO, AJO CHINO, INIA 104 BLANCO): altas -> prop_comercial_n_muestreo, n_com_muestreo, peso_parcela_comercial_g_est, rendimiento_comercial_tn_ha, prop_comercial_peso_muestra; bajas -> sin variables marcadamente bajas.
+
+Corte en k=3 grupos:
+- Grupo 1 (2 cultivares: AJO KIYAN, INIA 105 DONAJUS): altas -> sin variables marcadamente altas; bajas -> n_com_muestreo, prop_comercial_n_muestreo, rendimiento_comercial_tn_ha, peso_parcela_comercial_g_est, prop_comercial_peso_muestra.
+- Grupo 2 (2 cultivares: AJO CANETANO, AJO CHINO): altas -> prop_comercial_n_muestreo, n_com_muestreo, prop_comercial_peso_muestra; bajas -> num_dientes.
+- Grupo 3 (1 cultivares: INIA 104 BLANCO): altas -> longitud_bulbo_mm, ancho_bulbo_mm, ancho_bulbo_mm_clasif, rendimiento_total_tn_ha, peso_parcela_total_g_obs; bajas -> sin variables marcadamente bajas.
+
+Corte en k=4 grupos:
+- Grupo 1 (2 cultivares: AJO KIYAN, INIA 105 DONAJUS): altas -> sin variables marcadamente altas; bajas -> n_com_muestreo, prop_comercial_n_muestreo, rendimiento_comercial_tn_ha, peso_parcela_comercial_g_est, prop_comercial_peso_muestra.
+- Grupo 2 (1 cultivares: AJO CANETANO): altas -> peso_conto_gr; bajas -> num_dientes, peso_muestra_total_g, peso_bulbo_gr, peso_muestra_com_g.
+- Grupo 3 (1 cultivares: AJO CHINO): altas -> prop_comercial_n_muestreo, n_com_muestreo, prop_comercial_peso_muestra, peso_muestra_com_g, peso_bulbo_gr; bajas -> num_dientes.
+- Grupo 4 (1 cultivares: INIA 104 BLANCO): altas -> longitud_bulbo_mm, ancho_bulbo_mm, ancho_bulbo_mm_clasif, rendimiento_total_tn_ha, peso_parcela_total_g_obs; bajas -> sin variables marcadamente bajas.
