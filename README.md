@@ -190,3 +190,48 @@ python scripts/analisis_multivariado.py
 
 - `figures/pca_scatter_cultivares.png`
 - `figures/pca_biplot_cultivares.png`
+
+---
+
+## 🌡️ Clustering jerárquico + heatmap (medias por cultivar)
+
+Se agregó el script `scripts/analisis_clustering_heatmap.py` para complementar el análisis multivariado con **clustering jerárquico y visualización de perfiles estandarizados** por cultivar, usando:
+
+- `data/processed/parcelas_cuantitativas_sin_T5.csv`
+
+### Ejecución
+
+```bash
+python scripts/analisis_clustering_heatmap.py
+```
+
+### ¿Qué hace el script?
+
+1. Lee el archivo procesado sin T5 (solo lectura, no modifica el original).
+2. Selecciona automáticamente variables cuantitativas útiles.
+3. Excluye columnas de identificación: `parcela`, `bloque`, `tratamiento_codigo`, `tratamiento_nombre`.
+4. Descarta variables vacías, no numéricas o con varianza cero.
+5. Agrupa por `tratamiento_nombre` y calcula medias por cultivar.
+6. Estandariza variables (z-score) para comparabilidad multivariada.
+7. Ejecuta clustering jerárquico con distancia euclidiana y enlace Ward.
+8. Genera heatmap, dendrograma y clustermap para visualizar perfiles agronómicos similares.
+9. Si es posible, clasifica cultivares en 2, 3 y 4 grupos a partir del dendrograma.
+
+> El clustering se realiza sobre **medias por cultivar** y sobre una **matriz estandarizada**.
+
+### Archivos generados en `results/`
+
+- `results/clustering_matriz_base_cultivares.csv`
+- `results/clustering_matriz_estandarizada.csv`
+- `results/clustering_orden_cultivares.csv`
+- `results/clustering_distancias.csv`
+- `results/clustering_grupos_k2.csv`
+- `results/clustering_grupos_k3.csv`
+- `results/clustering_grupos_k4.csv`
+- `results/clustering_resumen.txt`
+
+### Figuras generadas en `figures/`
+
+- `figures/dendrograma_cultivares.png`
+- `figures/heatmap_cultivares.png`
+- `figures/clustermap_cultivares.png`
