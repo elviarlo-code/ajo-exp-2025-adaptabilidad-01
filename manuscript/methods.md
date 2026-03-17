@@ -1,22 +1,18 @@
-## 3. Materiales y métodos
+## 3\. Materiales y métodos
 
 ### 3.1. Área de estudio
 
-## El experimento se llevó a cabo en la región Lambayeque, al norte del Perú, bajo condiciones agroecológicas costeras caracterizadas por un clima árido a semiárido, baja precipitación anual, alta radiación solar y agricultura bajo riego. Estas condiciones son representativas de los principales sistemas de producción de ajo en la costa peruana.
+El experimento se llevó a cabo en la región Lambayeque, al norte de Perú, bajo condiciones agroecológicas costeras caracterizadas por un clima árido a semiárido, baja precipitación anual, alta radiación solar y agricultura bajo riego. Estas condiciones son representativas de los principales sistemas de producción de ajo en la costa peruana
 
 ### 3.2. Material vegetal
 
 Se evaluaron cinco cultivares de ajo (Allium sativum L.), incluyendo variedades mejoradas y colecciones locales:
 
-INIA 104 Blanco
-
-INIA 105 Donajus
-
-Ajo Chino
-
-Ajo Canetano
-
-Ajo Kiyan
+* INIA 104 Blanco
+* INIA 105 Donajus
+* Ajo Chino
+* Ajo Canetano
+* Ajo Kiyan
 
 Estos materiales fueron seleccionados en función de su relevancia agronómica, disponibilidad en sistemas productivos locales y potencial para programas de desarrollo de semilla regional.
 
@@ -30,31 +26,19 @@ Se aplicaron prácticas agronómicas estándar para el cultivo de ajo en la regi
 
 Se evaluó un conjunto de variables agronómicas y morfológicas relacionadas con el desarrollo del cultivo, características del bulbo y componentes del rendimiento. Las variables incluyeron:
 
-Número de plantas por muestra
-
-Proporción comercial de plantas
-
-Peso de bulbo (g)
-
-Peso total de muestra (g)
-
-Peso comercial de muestra (g)
-
-Peso total de parcela (kg)
-
-Peso comercial de parcela (kg)
-
-Rendimiento total (t ha⁻¹)
-
-Rendimiento comercial (t ha⁻¹)
-
-Longitud de bulbo (mm)
-
-Diámetro de bulbo (mm)
-
-Número de dientes
-
-Número de hojas
+* Número de plantas por muestra
+* Proporción comercial de plantas
+* Peso de bulbo (g)
+* Peso total de muestra (g)
+* Peso comercial de muestra (g)
+* Peso total de parcela (kg)
+* Peso comercial de parcela (kg)
+* Rendimiento total (t ha⁻¹)
+* Rendimiento comercial (t ha⁻¹)
+* Longitud de bulbo (mm)
+* Diámetro de bulbo (mm)
+* Número de dientes
+* Número de hojas
 
 Estas variables fueron seleccionadas para representar tanto atributos productivos como características morfológicas relevantes para la evaluación comercial y la diferenciación varietal.
 
@@ -66,7 +50,7 @@ Para garantizar la comparabilidad entre variables medidas en diferentes escalas,
 
 ### 3.6. Análisis estadístico univariado
 
-Se realizó un análisis de varianza (ANOVA) para evaluar las diferencias entre cultivares en cada variable agronómica. El modelo incluyó el cultivar como factor fijo y los bloques como efecto aleatorio.
+El análisis de varianza (ANOVA) se realizó utilizando modelos lineales, considerando el cultivar como factor fijo y los bloques como efecto aleatorio, de acuerdo con el diseño experimental. Se realizó el análisis de varianza (ANOVA) para evaluar las diferencias entre cultivares en cada variable agronómica.
 
 Previamente al ANOVA, se verificaron los supuestos de normalidad y homogeneidad de varianzas. En caso necesario, se consideraron transformaciones de datos para cumplir con estos supuestos.
 
@@ -82,24 +66,25 @@ Se calculó la proporción de varianza explicada por cada componente, y las coor
 
 Clustering jerárquico
 
-Se llevó a cabo un análisis de agrupamiento jerárquico para clasificar los cultivares en función de la similitud de sus perfiles agronómicos. Se construyó una matriz de distancias a partir de los datos estandarizados y se aplicó un método aglomerativo.
+Se utilizó el método de enlace de Ward con distancia euclidiana. Se llevó a cabo un análisis de agrupamiento jerárquico para clasificar los cultivares en función de la similitud de sus perfiles agronómicos. Se construyó una matriz de distancias a partir de los datos estandarizados y se aplicó un método aglomerativo.
 
 Se generaron dendrogramas para visualizar la estructura de agrupamiento entre los cultivares.
 
 Análisis mediante heatmap
 
-Se generó un mapa de calor (heatmap) basado en valores estandarizados (z-score) para visualizar los perfiles agronómicos de los cultivares. Este enfoque permitió identificar patrones relativos de alto y bajo desempeño en las variables evaluadas, facilitando la interpretación comparativa entre materiales.
+Los datos fueron estandarizados previamente mediante z-score para la construcción del heatmap para visualizar los perfiles agronómicos de los cultivares. Este enfoque permitió identificar patrones relativos de alto y bajo desempeño en las variables evaluadas, facilitando la interpretación comparativa entre materiales.
 
 ### 3.8. Software y reproducibilidad
 
 Todos los análisis fueron realizados en Python (versión 3.14), utilizando las siguientes bibliotecas:
 
-Pandas para el manejo de datos
+\- pandas (procesamiento de datos)  
 
-Scikit-learn para ACP y estandarización
+\- scikit-learn (ACP y estandarización)  
 
-Scipy para clustering jerárquico
+\- scipy (clustering jerárquico)  
 
-Seaborn y matplotlib para visualización
+\- seaborn y matplotlib (visualización)  
 
-Todos los scripts, datos y resultados están disponibles en un repositorio público, garantizando la reproducibilidad del análisis y la transparencia del flujo de trabajo.
+El código utilizado para el procesamiento y análisis de datos está disponible en un repositorio público (GitHub), lo que garantiza la reproducibilidad del estudio.
+
