@@ -1,15 +1,10 @@
-\## 3. Materiales y métodos
-
+## 3. Materiales y métodos
 
 ### 3.1. Área de estudio
 
 ## El experimento se llevó a cabo en la región Lambayeque, al norte del Perú, bajo condiciones agroecológicas costeras caracterizadas por un clima árido a semiárido, baja precipitación anual, alta radiación solar y agricultura bajo riego. Estas condiciones son representativas de los principales sistemas de producción de ajo en la costa peruana.
 
-
-
-\### 3.2. Material vegetal
-
-
+### 3.2. Material vegetal
 
 Se evaluaron cinco cultivares de ajo (Allium sativum L.), incluyendo variedades mejoradas y colecciones locales:
 
@@ -23,25 +18,15 @@ Ajo Canetano
 
 Ajo Kiyan
 
+Estos materiales fueron seleccionados en función de su relevancia agronómica, disponibilidad en sistemas productivos locales y potencial para programas de desarrollo de semilla regional.
 
-
-## Estos materiales fueron seleccionados en función de su relevancia agronómica, disponibilidad en sistemas productivos locales y potencial para programas de desarrollo de semilla regional.
-
-
-
-\### 3.3. Diseño experimental y manejo del cultivo
-
-
+### 3.3. Diseño experimental y manejo del cultivo
 
 El experimento se estableció en condiciones de campo utilizando un diseño de bloques completos al azar (DBCA). Cada cultivar fue asignado a parcelas experimentales dentro de cada bloque, con el objetivo de controlar la variabilidad espacial.
 
-## Se aplicaron prácticas agronómicas estándar para el cultivo de ajo en la región, incluyendo preparación del suelo, siembra, manejo del riego, fertilización y control de plagas y enfermedades. Todas las parcelas fueron manejadas bajo condiciones uniformes para asegurar que las diferencias observadas entre cultivares se deban principalmente a factores genéticos y fisiológicos.
+Se aplicaron prácticas agronómicas estándar para el cultivo de ajo en la región, incluyendo preparación del suelo, siembra, manejo del riego, fertilización y control de plagas y enfermedades. Todas las parcelas fueron manejadas bajo condiciones uniformes para asegurar que las diferencias observadas entre cultivares se deban principalmente a factores genéticos y fisiológicos.
 
-
-
-\### 3.4. Variables agronómicas
-
-
+### 3.4. Variables agronómicas
 
 Se evaluó un conjunto de variables agronómicas y morfológicas relacionadas con el desarrollo del cultivo, características del bulbo y componentes del rendimiento. Las variables incluyeron:
 
@@ -71,72 +56,50 @@ Número de dientes
 
 Número de hojas
 
+Estas variables fueron seleccionadas para representar tanto atributos productivos como características morfológicas relevantes para la evaluación comercial y la diferenciación varietal.
 
-
-## Estas variables fueron seleccionadas para representar tanto atributos productivos como características morfológicas relevantes para la evaluación comercial y la diferenciación varietal.
-
-
-
-\### 3.5. Preprocesamiento de datos
-
-
+### 3.5. Preprocesamiento de datos
 
 Los datos fueron procesados utilizando Python. Antes del análisis, se excluyeron variables no numéricas y columnas de identificación (por ejemplo, parcela, bloque, códigos de tratamiento).
 
+Para garantizar la comparabilidad entre variables medidas en diferentes escalas, los datos fueron estandarizados mediante normalización tipo z-score (media = 0, desviación estándar = 1). Asimismo, se calcularon valores promedio por cultivar para representar su desempeño agronómico general en los análisis multivariados.
 
-
-## Para garantizar la comparabilidad entre variables medidas en diferentes escalas, los datos fueron estandarizados mediante normalización tipo z-score (media = 0, desviación estándar = 1). Asimismo, se calcularon valores promedio por cultivar para representar su desempeño agronómico general en los análisis multivariados.
-
-
-
-\### 3.6. Análisis estadístico univariado
-
-
+### 3.6. Análisis estadístico univariado
 
 Se realizó un análisis de varianza (ANOVA) para evaluar las diferencias entre cultivares en cada variable agronómica. El modelo incluyó el cultivar como factor fijo y los bloques como efecto aleatorio.
 
 Previamente al ANOVA, se verificaron los supuestos de normalidad y homogeneidad de varianzas. En caso necesario, se consideraron transformaciones de datos para cumplir con estos supuestos.
 
+Las diferencias significativas entre cultivares se interpretaron a un nivel de significancia de p < 0.05.
 
-
-## Las diferencias significativas entre cultivares se interpretaron a un nivel de significancia de p < 0.05.
-
-
-
-\### 3.7. Análisis multivariado
-
+### 3.7. Análisis multivariado
 
 Análisis de Componentes Principales (ACP)
 
 Se realizó un análisis de componentes principales (ACP) utilizando datos estandarizados, con el objetivo de reducir la dimensionalidad e identificar las principales fuentes de variabilidad entre cultivares. Se consideraron los dos primeros componentes principales (PC1 y PC2) para la interpretación.
 
-## Se calculó la proporción de varianza explicada por cada componente, y las coordenadas de los cultivares fueron utilizadas para visualizar su relación y diferenciación.
+Se calculó la proporción de varianza explicada por cada componente, y las coordenadas de los cultivares fueron utilizadas para visualizar su relación y diferenciación.
 
 Clustering jerárquico
 
-## Se llevó a cabo un análisis de agrupamiento jerárquico para clasificar los cultivares en función de la similitud de sus perfiles agronómicos. Se construyó una matriz de distancias a partir de los datos estandarizados y se aplicó un método aglomerativo.
+Se llevó a cabo un análisis de agrupamiento jerárquico para clasificar los cultivares en función de la similitud de sus perfiles agronómicos. Se construyó una matriz de distancias a partir de los datos estandarizados y se aplicó un método aglomerativo.
 
 Se generaron dendrogramas para visualizar la estructura de agrupamiento entre los cultivares.
 
 Análisis mediante heatmap
 
-## Se generó un mapa de calor (heatmap) basado en valores estandarizados (z-score) para visualizar los perfiles agronómicos de los cultivares. Este enfoque permitió identificar patrones relativos de alto y bajo desempeño en las variables evaluadas, facilitando la interpretación comparativa entre materiales.
+Se generó un mapa de calor (heatmap) basado en valores estandarizados (z-score) para visualizar los perfiles agronómicos de los cultivares. Este enfoque permitió identificar patrones relativos de alto y bajo desempeño en las variables evaluadas, facilitando la interpretación comparativa entre materiales.
 
-
-
-\### 3.8. Software y reproducibilidad
-
-
+### 3.8. Software y reproducibilidad
 
 Todos los análisis fueron realizados en Python (versión 3.14), utilizando las siguientes bibliotecas:
 
-pandas para el manejo de datos
+Pandas para el manejo de datos
 
-scikit-learn para ACP y estandarización
+Scikit-learn para ACP y estandarización
 
-scipy para clustering jerárquico
+Scipy para clustering jerárquico
 
-seaborn y matplotlib para visualización
+Seaborn y matplotlib para visualización
 
 Todos los scripts, datos y resultados están disponibles en un repositorio público, garantizando la reproducibilidad del análisis y la transparencia del flujo de trabajo.
-
