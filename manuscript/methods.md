@@ -1,60 +1,113 @@
-# Materiales y Métodos
+#3. MÉTODOS
+##Materiales y métodos
+###Área de estudio
 
-## Área de estudio
-
-El experimento se realizó durante la campaña agrícola 2025 en la Estación Experimental Agraria Vista Florida del Instituto Nacional de Innovación Agraria (INIA), ubicada en la región Lambayeque, costa norte del Perú. La zona presenta un clima cálido-seco, característico de la costa norte, con temperaturas medias elevadas y baja precipitación anual.
-
+El experimento se llevó a cabo en la región Lambayeque, al norte del Perú, bajo condiciones agroecológicas costeras caracterizadas por un clima árido a semiárido, baja precipitación anual, alta radiación solar y agricultura bajo riego. Estas condiciones son representativas de los principales sistemas de producción de ajo en la costa peruana.
 ---
 
-## Material vegetal
+###Material vegetal
 
-Se evaluaron seis cultivares de ajo (Allium sativum L.), conformados por cinco líneas avanzadas y un cultivar testigo, seleccionados por el Programa Nacional de Hortalizas del INIA. El material vegetal utilizado correspondió a bulbos sanos y uniformes, provenientes de campañas previas de evaluación.
+Se evaluaron cinco cultivares de ajo (Allium sativum L.), incluyendo variedades mejoradas y colecciones locales:
 
+INIA 104 Blanco
+
+INIA 105 Donajus
+
+Ajo Chino
+
+Ajo Canetano
+
+Ajo Kiyan
+
+Estos materiales fueron seleccionados en función de su relevancia agronómica, disponibilidad en sistemas productivos locales y potencial para programas de desarrollo de semilla regional.
 ---
 
-## Diseño experimental
+###Diseño experimental y manejo del cultivo
 
-El experimento se condujo bajo un diseño de Bloques Completos al Azar (DBCA), con seis tratamientos correspondientes a los cultivares evaluados y un número de bloques definido según la Ficha 10 del experimento.
+El experimento se estableció en condiciones de campo utilizando un diseño de bloques completos al azar (DBCA). Cada cultivar fue asignado a parcelas experimentales dentro de cada bloque, con el objetivo de controlar la variabilidad espacial.
 
-Cada unidad experimental estuvo constituida por una parcela representativa por cultivar, establecida bajo condiciones agronómicas homogéneas.
-
+Se aplicaron prácticas agronómicas estándar para el cultivo de ajo en la región, incluyendo preparación del suelo, siembra, manejo del riego, fertilización y control de plagas y enfermedades. Todas las parcelas fueron manejadas bajo condiciones uniformes para asegurar que las diferencias observadas entre cultivares se deban principalmente a factores genéticos y fisiológicos.
 ---
 
-## Manejo agronómico
+###Variables agronómicas
 
-El manejo del cultivo se realizó de acuerdo con las prácticas agronómicas recomendadas para el cultivo de ajo en la región, incluyendo preparación del terreno, siembra, riego, fertilización y control fitosanitario. Las labores culturales se aplicaron de manera uniforme a todos los tratamientos, con el fin de minimizar efectos externos sobre la respuesta de los cultivares.
+Se evaluó un conjunto de variables agronómicas y morfológicas relacionadas con el desarrollo del cultivo, características del bulbo y componentes del rendimiento. Las variables incluyeron:
 
+Número de plantas por muestra
+
+Proporción comercial de plantas
+
+Peso de bulbo (g)
+
+Peso total de muestra (g)
+
+Peso comercial de muestra (g)
+
+Peso total de parcela (kg)
+
+Peso comercial de parcela (kg)
+
+Rendimiento total (t ha⁻¹)
+
+Rendimiento comercial (t ha⁻¹)
+
+Longitud de bulbo (mm)
+
+Diámetro de bulbo (mm)
+
+Número de dientes
+
+Número de hojas
+
+Estas variables fueron seleccionadas para representar tanto atributos productivos como características morfológicas relevantes para la evaluación comercial y la diferenciación varietal.
 ---
 
-## Variables evaluadas
+###Preprocesamiento de datos
 
-### Variables fenológicas y de planta
-- Días a emergencia
-- Altura de planta (cm)
-- Número de hojas por planta
+Los datos fueron procesados utilizando Python. Antes del análisis, se excluyeron variables no numéricas y columnas de identificación (por ejemplo, parcela, bloque, códigos de tratamiento).
 
-### Variables de rendimiento
-- Peso total de bulbos por parcela
-- Rendimiento estimado (t·ha⁻¹)
-- Número de bulbos comerciales
-- Peso promedio de bulbo
-
-### Variables de calidad
-- Diámetro de bulbo
-- Uniformidad de bulbos
-- Clasificación comercial, # Clasificación de calibre según Burba J.L., 2013
-
+Para garantizar la comparabilidad entre variables medidas en diferentes escalas, los datos fueron estandarizados mediante normalización tipo z-score (media = 0, desviación estándar = 1). Asimismo, se calcularon valores promedio por cultivar para representar su desempeño agronómico general en los análisis multivariados.
 ---
 
-## Análisis de datos
+###Análisis estadístico univariado
 
-Los datos obtenidos fueron organizados en hojas de cálculo y posteriormente analizados mediante estadística descriptiva e inferencial. Se aplicaron análisis de varianza para evaluar diferencias entre cultivares, considerando un nivel de significancia estadística convencional.
+Se realizó un análisis de varianza (ANOVA) para evaluar las diferencias entre cultivares en cada variable agronómica. El modelo incluyó el cultivar como factor fijo y los bloques como efecto aleatorio.
 
-Los procedimientos detallados de análisis y procesamiento de datos se documentarán progresivamente en la carpeta `/scripts`.
+Previamente al ANOVA, se verificaron los supuestos de normalidad y homogeneidad de varianzas. En caso necesario, se consideraron transformaciones de datos para cumplir con estos supuestos.
 
+Las diferencias significativas entre cultivares se interpretaron a un nivel de significancia de p < 0.05.
 ---
 
-## Consideraciones éticas y experimentales
+###Análisis multivariado
+Análisis de Componentes Principales (ACP)
 
-El experimento se desarrolló respetando las normas técnicas institucionales del INIA y forma parte del proceso de generación de evidencia científica para el desarrollo de una tecnología regional de semilla de ajo.
+Se realizó un análisis de componentes principales (ACP) utilizando datos estandarizados, con el objetivo de reducir la dimensionalidad e identificar las principales fuentes de variabilidad entre cultivares. Se consideraron los dos primeros componentes principales (PC1 y PC2) para la interpretación.
 
+Se calculó la proporción de varianza explicada por cada componente, y las coordenadas de los cultivares fueron utilizadas para visualizar su relación y diferenciación.
+---
+
+Clustering jerárquico
+
+Se llevó a cabo un análisis de agrupamiento jerárquico para clasificar los cultivares en función de la similitud de sus perfiles agronómicos. Se construyó una matriz de distancias a partir de los datos estandarizados y se aplicó un método aglomerativo.
+---
+
+Se generaron dendrogramas para visualizar la estructura de agrupamiento entre los cultivares.
+
+Análisis mediante heatmap
+
+Se generó un mapa de calor (heatmap) basado en valores estandarizados (z-score) para visualizar los perfiles agronómicos de los cultivares. Este enfoque permitió identificar patrones relativos de alto y bajo desempeño en las variables evaluadas, facilitando la interpretación comparativa entre materiales.
+---
+
+###Software y reproducibilidad
+
+Todos los análisis fueron realizados en Python (versión 3.14), utilizando las siguientes bibliotecas:
+
+pandas para el manejo de datos
+
+scikit-learn para ACP y estandarización
+
+scipy para clustering jerárquico
+
+seaborn y matplotlib para visualización
+
+Todos los scripts, datos y resultados están disponibles en un repositorio público, garantizando la reproducibilidad del análisis y la transparencia del flujo de trabajo.
