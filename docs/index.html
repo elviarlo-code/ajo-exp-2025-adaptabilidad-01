@@ -1,1 +1,1031 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluación agronómica y análisis multivariado de cultivares de ajo</title>
+  <meta name="description" content="Proyecto científico web sobre evaluación agronómica y análisis multivariado de cultivares de ajo en Lambayeque, Perú.">
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --surface:#ffffff;
+      --surface-2:#f8fbfe;
+      --ink:#142230;
+      --muted:#5e6d79;
+      --line:#d9e3ec;
+      --primary:#1f5e8a;
+      --primary-dark:#143d5b;
+      --secondary:#0a8f6a;
+      --accent:#dfeef8;
+      --shadow:0 10px 35px rgba(20,34,48,.08);
+      --radius:22px;
+      --max:1180px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.7;
+    }
+
+    img{max-width:100%; display:block}
+    a{color:var(--primary); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(13,34,51,.76), rgba(13,34,51,.68)),
+        url('img/portada-ajo.jpg') center/cover no-repeat;
+      color:#fff;
+      min-height:92vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:120px;
+      background:linear-gradient(to bottom, rgba(244,247,251,0), rgba(244,247,251,1));
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:50px 20px 120px;
+      width:100%;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:.9rem;
+      margin-bottom:18px;
+      backdrop-filter:blur(4px);
+    }
+
+    .hero h1{
+      font-size:clamp(2.2rem, 4vw, 4rem);
+      line-height:1.08;
+      margin:0 0 18px;
+      max-width:980px;
+    }
+
+    .hero p.lead{
+      max-width:930px;
+      margin:0 0 26px;
+      font-size:1.12rem;
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:14px;
+      font-weight:600;
+      border:1px solid transparent;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--primary-dark);
+    }
+
+    .btn-primary:hover{
+      text-decoration:none;
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      border-color:rgba(255,255,255,.22);
+    }
+
+    .btn-secondary:hover{
+      text-decoration:none;
+      background:rgba(255,255,255,.16);
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:14px;
+      max-width:980px;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+      padding:15px 16px;
+      backdrop-filter:blur(5px);
+    }
+
+    .hero-card span{
+      display:block;
+      font-size:.88rem;
+      opacity:.9;
+      margin-bottom:6px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:80;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(217,227,236,.9);
+    }
+
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-weight:800;
+      color:var(--primary-dark);
+      letter-spacing:.01em;
+    }
+
+    .nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      padding:9px 12px;
+      border-radius:12px;
+      color:#284357;
+      font-weight:500;
+      font-size:.95rem;
+    }
+
+    .nav a:hover{
+      background:#edf4f9;
+      text-decoration:none;
+    }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 20px 60px;
+    }
+
+    .grid-top{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      margin-top:-70px;
+      position:relative;
+      z-index:5;
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .card-pad{
+      padding:26px;
+    }
+
+    h2.section-title{
+      font-size:1.8rem;
+      margin:0 0 16px;
+      color:var(--primary-dark);
+      line-height:1.2;
+    }
+
+    h3{
+      margin:24px 0 10px;
+      color:#234761;
+      font-size:1.15rem;
+    }
+
+    p{margin:0 0 14px}
+    ul{margin:0 0 14px 20px}
+    li{margin-bottom:8px}
+
+    .abstract{
+      background:linear-gradient(180deg,#fbfdff,#f7fbfe);
+      border:1px solid #dbe7f0;
+      border-left:5px solid var(--primary);
+      border-radius:18px;
+      padding:18px 18px 6px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .chip{
+      display:inline-block;
+      background:#edf5fb;
+      color:#1c5277;
+      border:1px solid #d9e7f2;
+      padding:6px 11px;
+      border-radius:999px;
+      font-size:.9rem;
+    }
+
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini-stat{
+      background:var(--surface-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .mini-stat .k{
+      font-size:.9rem;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .mini-stat .v{
+      font-size:1.55rem;
+      font-weight:800;
+      color:var(--primary-dark);
+      line-height:1.1;
+    }
+
+    .section{
+      margin-top:24px;
+    }
+
+    .paper{
+      margin-top:24px;
+      overflow:hidden;
+    }
+
+    .paper-header{
+      padding:28px 28px 14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(to bottom, #fcfdff, #f7fbfe);
+    }
+
+    .paper-header h2{
+      margin:0 0 10px;
+      font-size:1.7rem;
+      line-height:1.2;
+    }
+
+    .paper-body section{
+      padding:28px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .paper-body section:last-child{
+      border-bottom:none;
+    }
+
+    .callout{
+      background:#eef8f3;
+      border:1px solid #cce7db;
+      border-left:5px solid var(--secondary);
+      border-radius:18px;
+      padding:18px;
+      margin:16px 0;
+    }
+
+    .info{
+      background:#f8fbfe;
+      border:1px dashed #cddbe6;
+      border-radius:16px;
+      padding:15px 16px;
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin:18px 0 6px;
+    }
+
+    .result-box{
+      background:linear-gradient(180deg,#ffffff,#f8fbfe);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      text-align:left;
+    }
+
+    .result-box .label{
+      color:var(--muted);
+      font-size:.9rem;
+      margin-bottom:6px;
+    }
+
+    .result-box .value{
+      font-size:1.6rem;
+      font-weight:800;
+      color:var(--primary-dark);
+      line-height:1.1;
+    }
+
+    .result-box .sub{
+      margin-top:8px;
+      font-size:.92rem;
+      color:#4c6272;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      margin:16px 0 8px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:760px;
+    }
+
+    th, td{
+      padding:12px 14px;
+      text-align:left;
+      border-bottom:1px solid #e6edf3;
+      vertical-align:top;
+    }
+
+    th{
+      background:#f3f8fc;
+      color:#244861;
+      font-size:.95rem;
+    }
+
+    tr:hover td{
+      background:#fbfdff;
+    }
+
+    .caption{
+      font-size:.93rem;
+      color:var(--muted);
+      margin-top:10px;
+    }
+
+    .figure-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin-top:12px;
+    }
+
+    figure{
+      margin:0;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 5px 16px rgba(20,34,48,.05);
+    }
+
+    figure img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      background:#eef3f7;
+    }
+
+    figcaption{
+      padding:14px 16px 16px;
+      color:#435868;
+      font-size:.95rem;
+    }
+
+    .columns{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .trl-box{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .trl-scale{
+      display:grid;
+      grid-template-columns:repeat(9,1fr);
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .trl-scale span{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 0;
+      border-radius:12px;
+      background:#f2f6fa;
+      border:1px solid var(--line);
+      font-weight:800;
+      color:#627381;
+    }
+
+    .trl-scale span.active{
+      background:var(--secondary);
+      color:#fff;
+      border-color:var(--secondary);
+    }
+
+    footer{
+      max-width:var(--max);
+      margin:0 auto 40px;
+      padding:0 20px;
+      text-align:center;
+      color:#6a7a86;
+      font-size:.95rem;
+    }
+
+    @media (max-width:1050px){
+      .grid-top,
+      .trl-box,
+      .columns{
+        grid-template-columns:1fr;
+      }
+
+      .result-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:780px){
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-inner{
+        padding:42px 20px 90px;
+      }
+
+      .paper-header,
+      .paper-body section,
+      .card-pad{
+        padding:22px 18px;
+      }
+
+      .figure-grid,
+      .result-grid,
+      .mini-stats{
+        grid-template-columns:1fr;
+      }
+
+      .trl-scale{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      figure img{
+        height:240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="hero-badge">Proyecto científico web · Ajo 2025 · EEA Vista Florida</div>
+      <h1>Evaluación agronómica y análisis multivariado de cultivares de ajo en Lambayeque, Perú</h1>
+      <p class="lead">
+        Plataforma web del experimento orientado a evaluar la adaptabilidad agronómica inicial de cultivares de ajo bajo condiciones costeras,
+        integrando resultados productivos, calidad comercial, análisis de varianza, comparaciones múltiples y herramientas multivariadas para
+        apoyar la selección preliminar de materiales con potencial para el desarrollo de semilla regional.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#articulo">Ver artículo</a>
+        <a class="btn btn-secondary" href="https://github.com/elviarlo-code/ajo-exp-2025-adaptabilidad-01" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-card">
+          <span>Autor</span>
+          Víctor Ramírez
+        </div>
+        <div class="hero-card">
+          <span>Institución</span>
+          INIA – EEA Vista Florida
+        </div>
+        <div class="hero-card">
+          <span>Cultivo</span>
+          Allium sativum L.
+        </div>
+        <div class="hero-card">
+          <span>Ubicación</span>
+          Lambayeque, Perú
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">AJO EXP 2025</div>
+      <nav class="nav">
+        <a href="#resumen">Resumen</a>
+        <a href="#introduccion">Introducción</a>
+        <a href="#metodos">Métodos</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#figuras">Figuras</a>
+        <a href="#discusion">Discusión</a>
+        <a href="#conclusiones">Conclusiones</a>
+        <a href="#trl">TRL</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="grid-top">
+      <div class="card card-pad">
+        <h2 class="section-title">Resumen ejecutivo</h2>
+        <div class="abstract">
+          <p>
+            El estudio tuvo como objetivo evaluar la adaptabilidad agronómica inicial de cultivares de ajo en condiciones costeras de Lambayeque,
+            como base para la selección preliminar de material con potencial para el desarrollo de semilla regional. El análisis final se realizó
+            con cinco cultivares y mostró diferencias significativas en variables asociadas a peso de bulbo, peso de muestra total y comercial,
+            longitud y ancho de bulbo, número de dientes y número de hojas. INIA 104 BLANCO presentó el mejor desempeño integral, mientras que
+            el PCA y el agrupamiento jerárquico confirmaron su separación como material superior. :contentReference[oaicite:2]{index=2}
+          </p>
+        </div>
+        <div class="chips">
+          <span class="chip">Adaptabilidad varietal</span>
+          <span class="chip">ANOVA</span>
+          <span class="chip">Tukey</span>
+          <span class="chip">PCA</span>
+          <span class="chip">Clustering</span>
+          <span class="chip">Semilla regional</span>
+        </div>
+      </div>
+
+      <div class="card card-pad">
+        <h2 class="section-title">Indicadores clave</h2>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="k">Cultivar con mejor desempeño</div>
+            <div class="v">INIA 104 BLANCO</div>
+          </div>
+          <div class="mini-stat">
+            <div class="k">Peso de bulbo máximo</div>
+            <div class="v">64.16 g</div>
+          </div>
+          <div class="mini-stat">
+            <div class="k">Rendimiento total máximo</div>
+            <div class="v">8.82 t/ha</div>
+          </div>
+          <div class="mini-stat">
+            <div class="k">PC1 + PC2</div>
+            <div class="v">86.67 %</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <article class="card paper" id="articulo">
+      <div class="paper-header">
+        <h2>Artículo científico del experimento</h2>
+        <p><strong>Autor:</strong> Víctor Ramírez</p>
+        <p><strong>Afiliación:</strong> INIA – Estación Experimental Agraria Vista Florida</p>
+      </div>
+
+      <div class="paper-body">
+        <section id="resumen">
+          <h2 class="section-title">Resumen y abstract</h2>
+
+          <h3>Resumen</h3>
+          <p>
+            El objetivo del estudio fue evaluar la adaptabilidad agronómica inicial de cultivares de ajo en condiciones costeras de Lambayeque,
+            Perú, como base para la selección preliminar de material con potencial para el desarrollo de semilla regional. El ensayo se estableció
+            bajo un diseño de bloques completos al azar y el procesamiento estadístico final se realizó con cinco cultivares, debido a que un
+            tratamiento fue excluido del archivo analítico antes del ANOVA y de los análisis multivariados. Se analizaron variables de rendimiento,
+            calidad comercial y morfología de bulbo mediante estadística descriptiva, análisis de varianza, análisis multivariado y comparaciones
+            múltiples. :contentReference[oaicite:3]{index=3}
+          </p>
+          <p>
+            Los resultados mostraron diferencias significativas entre cultivares para peso de bulbo, peso de muestra total y comercial, longitud y
+            ancho de bulbo, número de dientes y número de hojas. INIA 104 BLANCO presentó los mayores promedios de peso de bulbo, rendimiento total,
+            rendimiento comercial, longitud de bulbo y ancho de bulbo. El PCA indicó que PC1 y PC2 explicaron 73.86 % y 12.81 % de la variación,
+            respectivamente. :contentReference[oaicite:4]{index=4}
+          </p>
+
+          <h3>Abstract</h3>
+          <p>
+            The study evaluated the initial agronomic adaptability of garlic cultivars under coastal conditions of Lambayeque, Peru, as a basis for
+            preliminary selection of materials with potential for a regional seed system. Yield, commercial quality, and bulb morphology variables
+            were analyzed using descriptive statistics, ANOVA, Tukey comparisons, and multivariate methods. INIA 104 BLANCO showed the highest mean
+            values in the main productive and commercial traits. :contentReference[oaicite:5]{index=5}
+          </p>
+        </section>
+
+        <section id="introduccion">
+          <h2 class="section-title">Introducción</h2>
+          <p>
+            El ajo es un cultivo hortícola de importancia económica y alimentaria. En la costa norte del Perú, una limitante importante es el uso
+            predominante de material de siembra no certificado, lo que incrementa la variabilidad del comportamiento agronómico y restringe la
+            estabilidad del rendimiento y la uniformidad comercial. En este contexto, la evaluación de la adaptabilidad varietal es un componente
+            clave para identificar cultivares con mejor desempeño en condiciones específicas y apoyar programas de desarrollo de semilla. :contentReference[oaicite:6]{index=6}
+          </p>
+
+          <div class="callout">
+            <strong>Objetivo del estudio.</strong> Evaluar la adaptabilidad agronómica inicial de cultivares de ajo en condiciones de la costa norte
+            del Perú mediante el análisis integrado de variables de rendimiento, calidad comercial y morfología del bulbo. :contentReference[oaicite:7]{index=7}
+          </div>
+        </section>
+
+        <section id="metodos">
+          <h2 class="section-title">Materiales y métodos</h2>
+
+          <div class="columns">
+            <div>
+              <h3>Área de estudio</h3>
+              <p>
+                El experimento se realizó en la región Lambayeque, dentro de un sistema agrícola bajo riego representativo de la zona, correspondiente
+                a la Estación Experimental Agraria Vista Florida del INIA. :contentReference[oaicite:8]{index=8}
+              </p>
+
+              <h3>Diseño experimental</h3>
+              <p>
+                El ensayo se condujo bajo un diseño de bloques completos al azar, con cuatro bloques y una parcela por cultivar en cada bloque. La
+                parcela constituyó la unidad experimental. :contentReference[oaicite:9]{index=9}
+              </p>
+
+              <h3>Cultivares analizados</h3>
+              <ul>
+                <li>AJO CANETANO</li>
+                <li>AJO CHINO</li>
+                <li>AJO KIYAN</li>
+                <li>INIA 104 BLANCO</li>
+                <li>INIA 105 DONAJUS</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Variables evaluadas</h3>
+              <ul>
+                <li>Número de plantas comerciales</li>
+                <li>Proporción comercial</li>
+                <li>Peso de muestra total y comercial</li>
+                <li>Peso total y comercial de parcela</li>
+                <li>Rendimiento total y comercial</li>
+                <li>Peso de bulbo</li>
+                <li>Longitud y ancho de bulbo</li>
+                <li>Número de dientes</li>
+                <li>Número de hojas</li>
+              </ul>
+
+              <h3>Análisis estadístico</h3>
+              <ul>
+                <li>Descriptivos por cultivar</li>
+                <li>ANOVA con tratamiento y bloque</li>
+                <li>Comparaciones múltiples de Tukey</li>
+                <li>Estandarización z</li>
+                <li>PCA</li>
+                <li>Clustering jerárquico con Ward</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="info">
+            El análisis estadístico final se realizó con cinco cultivares, ya que un tratamiento fue excluido durante la depuración del conjunto de
+            datos previo al ANOVA y a los análisis multivariados. :contentReference[oaicite:10]{index=10}
+          </div>
+        </section>
+
+        <section id="resultados">
+          <h2 class="section-title">Resultados</h2>
+
+          <div class="result-grid">
+            <div class="result-box">
+              <div class="label">Cultivar superior</div>
+              <div class="value">INIA 104</div>
+              <div class="sub">Mayor desempeño integral</div>
+            </div>
+            <div class="result-box">
+              <div class="label">Peso de bulbo</div>
+              <div class="value">64.16 g</div>
+              <div class="sub">Máximo valor promedio</div>
+            </div>
+            <div class="result-box">
+              <div class="label">Rendimiento total</div>
+              <div class="value">8.82 t/ha</div>
+              <div class="sub">Mayor rendimiento observado</div>
+            </div>
+            <div class="result-box">
+              <div class="label">PCA</div>
+              <div class="value">86.67 %</div>
+              <div class="sub">Varianza acumulada PC1 + PC2</div>
+            </div>
+          </div>
+
+          <h3>Desempeño agronómico por cultivar</h3>
+          <p>
+            INIA 104 BLANCO registró los mayores valores promedio de peso de bulbo, rendimiento total, rendimiento comercial, longitud y ancho de
+            bulbo. AJO CHINO mostró un comportamiento intermedio-alto, mientras que AJO KIYAN e INIA 105 DONAJUS concentraron los menores indicadores
+            de desempeño comercial. :contentReference[oaicite:11]{index=11}
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cultivar</th>
+                  <th>Peso de bulbo (g)</th>
+                  <th>Rendimiento total (t ha<sup>-1</sup>)</th>
+                  <th>Rendimiento comercial (t ha<sup>-1</sup>)</th>
+                  <th>Longitud de bulbo (mm)</th>
+                  <th>Ancho de bulbo (mm)</th>
+                  <th>Número de dientes</th>
+                  <th>Número de hojas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AJO CANETANO</td>
+                  <td>43.03</td>
+                  <td>7.99</td>
+                  <td>7.66</td>
+                  <td>41.75</td>
+                  <td>52.49</td>
+                  <td>5.30</td>
+                  <td>10.90</td>
+                </tr>
+                <tr>
+                  <td>AJO CHINO</td>
+                  <td>58.89</td>
+                  <td>7.71</td>
+                  <td>7.71</td>
+                  <td>44.13</td>
+                  <td>56.16</td>
+                  <td>4.68</td>
+                  <td>10.93</td>
+                </tr>
+                <tr>
+                  <td>AJO KIYAN</td>
+                  <td>47.68</td>
+                  <td>7.04</td>
+                  <td>5.78</td>
+                  <td>40.68</td>
+                  <td>50.64</td>
+                  <td>6.23</td>
+                  <td>12.85</td>
+                </tr>
+                <tr>
+                  <td><strong>INIA 104 BLANCO</strong></td>
+                  <td><strong>64.16</strong></td>
+                  <td><strong>8.82</strong></td>
+                  <td><strong>8.68</strong></td>
+                  <td><strong>49.79</strong></td>
+                  <td><strong>60.79</strong></td>
+                  <td><strong>9.40</strong></td>
+                  <td>11.73</td>
+                </tr>
+                <tr>
+                  <td>INIA 105 DONAJUS</td>
+                  <td>38.76</td>
+                  <td>6.81</td>
+                  <td>6.12</td>
+                  <td>39.52</td>
+                  <td>49.83</td>
+                  <td>8.18</td>
+                  <td>10.13</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption"><strong>Tabla 1.</strong> Resumen de variables agronómicas clave por cultivar. :contentReference[oaicite:12]{index=12}</p>
+
+          <h3>Análisis de varianza</h3>
+          <p>
+            El ANOVA confirmó diferencias significativas entre cultivares para peso de muestra total, peso de muestra comercial, peso de bulbo,
+            número de hojas, longitud y ancho de bulbo, número de dientes y ancho de bulbo clasificado. :contentReference[oaicite:13]{index=13}
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>F</th>
+                  <th>p-valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Peso de muestra total (g)</td><td>11.6452</td><td>0.0004</td></tr>
+                <tr><td>Peso de muestra comercial (g)</td><td>8.3614</td><td>0.0018</td></tr>
+                <tr><td>Peso de bulbo (g)</td><td>11.6452</td><td>0.0004</td></tr>
+                <tr><td>Número de hojas</td><td>6.0407</td><td>0.0067</td></tr>
+                <tr><td>Longitud de bulbo (mm)</td><td>10.3883</td><td>0.0007</td></tr>
+                <tr><td>Ancho de bulbo (mm)</td><td>10.7153</td><td>0.0006</td></tr>
+                <tr><td>Número de dientes</td><td>10.3435</td><td>0.0007</td></tr>
+                <tr><td>Ancho de bulbo clasificado (mm)</td><td>10.3928</td><td>0.0007</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption"><strong>Tabla 2.</strong> Variables con diferencias significativas entre cultivares según ANOVA. :contentReference[oaicite:14]{index=14}</p>
+
+          <h3>Comparaciones múltiples de Tukey</h3>
+          <p>
+            INIA 104 BLANCO conformó el grupo estadísticamente superior para peso de muestra total. AJO CHINO se ubicó en un grupo intermedio-alto,
+            mientras que AJO CANETANO e INIA 105 DONAJUS mostraron el menor desempeño para esta variable. :contentReference[oaicite:15]{index=15}
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cultivar</th>
+                  <th>Peso de muestra total (g)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>INIA 104 BLANCO</strong></td><td><strong>641.62 ± 71.16 a</strong></td></tr>
+                <tr><td>AJO CHINO</td><td>588.88 ± 41.85 ab</td></tr>
+                <tr><td>AJO KIYAN</td><td>476.82 ± 64.66 bc</td></tr>
+                <tr><td>AJO CANETANO</td><td>430.25 ± 31.21 c</td></tr>
+                <tr><td>INIA 105 DONAJUS</td><td>387.62 ± 68.08 c</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="caption"><strong>Tabla 3.</strong> Comparación de medias por Tukey. :contentReference[oaicite:16]{index=16}</p>
+
+          <h3>Análisis de componentes principales y clustering</h3>
+          <p>
+            Los dos primeros componentes principales explicaron 86.67 % de la variación total. PC1 explicó 73.86 % y estuvo dominado por variables
+            asociadas con tamaño de bulbo y productividad; PC2 explicó 12.81 % y estuvo dominado por número de hojas, proporción comercial por peso
+            y número de dientes. El clustering separó tres grupos: INIA 104 BLANCO como grupo independiente, AJO CANETANO y AJO CHINO como grupo
+            intermedio, y AJO KIYAN junto con INIA 105 DONAJUS como grupo de menor desempeño comercial. :contentReference[oaicite:17]{index=17}
+          </p>
+
+          <div class="callout">
+            <strong>Resultado integrador.</strong> La convergencia entre descriptivos, ANOVA, Tukey, PCA y clustering refuerza que INIA 104 BLANCO
+            fue el material más promisorio bajo las condiciones del ensayo. :contentReference[oaicite:18]{index=18}
+          </div>
+        </section>
+
+        <section id="figuras">
+          <h2 class="section-title">Figuras del proyecto</h2>
+          <p>
+            Crea una carpeta llamada <strong>img</strong> y sube allí tus imágenes. Puedes usar estos nombres para que el HTML funcione directamente.
+          </p>
+
+          <div class="figure-grid">
+            <figure>
+              <img src="img/figura1-marco-conceptual.png" alt="Marco conceptual del estudio de ajo">
+              <figcaption><strong>Figura 1.</strong> Marco conceptual del estudio y ruta analítica del experimento.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="img/figura2-pca.png" alt="Biplot PCA cultivares de ajo">
+              <figcaption><strong>Figura 2.</strong> Biplot del PCA basado en medias estandarizadas por cultivar.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="img/figura3-dendrograma.png" alt="Dendrograma de agrupamiento jerárquico">
+              <figcaption><strong>Figura 3.</strong> Dendrograma construido con distancia euclidiana y método de Ward.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="img/figura4-heatmap.png" alt="Heatmap de variables agronómicas">
+              <figcaption><strong>Figura 4.</strong> Mapa de calor de variables estandarizadas por cultivar.</figcaption>
+            </figure>
+          </div>
+
+          <div class="info">
+            También te recomiendo agregar una imagen de portada llamada <code>img/portada-ajo.jpg</code>. Puede ser una foto del experimento, del cultivo
+            o de los bulbos cosechados.
+          </div>
+        </section>
+
+        <section id="discusion">
+          <h2 class="section-title">Discusión</h2>
+          <p>
+            La integración del análisis de varianza con herramientas multivariadas permitió identificar patrones consistentes de diferenciación
+            agronómica entre los cultivares evaluados. Las principales fuentes de variación se asociaron con rasgos de tamaño de bulbo y productividad,
+            los cuales son determinantes para la calidad comercial y la selección varietal. :contentReference[oaicite:19]{index=19}
+          </p>
+          <p>
+            INIA 104 BLANCO destacó de manera consistente en los descriptivos, la prueba de Tukey y el análisis multivariado. En contraste, INIA 105
+            DONAJUS y AJO KIYAN mostraron los perfiles de menor desempeño comercial relativo. AJO CHINO y AJO CANETANO presentaron perfiles
+            intermedios y podrían considerarse materiales útiles para validaciones posteriores. :contentReference[oaicite:20]{index=20}
+          </p>
+          <p>
+            Desde una perspectiva aplicada, los resultados constituyen una base técnica para la selección preliminar de materiales en programas de
+            desarrollo de semilla regional de ajo en la costa norte del Perú. :contentReference[oaicite:21]{index=21}
+          </p>
+        </section>
+
+        <section id="conclusiones">
+          <h2 class="section-title">Conclusiones</h2>
+          <ul>
+            <li>Se evidenciaron diferencias agronómicas importantes entre los cultivares de ajo evaluados.</li>
+            <li>INIA 104 BLANCO presentó el mejor desempeño integral en peso de bulbo, dimensiones de bulbo y rendimiento.</li>
+            <li>El ANOVA confirmó diferencias significativas en variables clave de calidad y productividad.</li>
+            <li>El PCA y el clustering permitieron distinguir tres perfiles principales de comportamiento agronómico.</li>
+            <li>Los resultados respaldan la combinación de ANOVA y herramientas multivariadas para la selección preliminar de cultivares adaptados a Lambayeque. :contentReference[oaicite:22]{index=22}</li>
+          </ul>
+        </section>
+
+        <section id="trl">
+          <h2 class="section-title">TRL y proyección tecnológica</h2>
+
+          <div class="trl-box">
+            <div class="card card-pad">
+              <p>
+                Este experimento forma parte del proceso inicial de construcción de una tecnología regional de semilla de ajo para Lambayeque. Los
+                resultados permiten identificar materiales promisorios y orientar una siguiente etapa de validación multilocal, fortalecimiento del
+                sistema de semilla y futura liberación tecnológica.
+              </p>
+              <p>
+                En términos prácticos, esta web puede presentarse como una vitrina científica del proyecto: muestra el problema, el enfoque analítico,
+                la evidencia experimental y la ruta de continuidad.
+              </p>
+            </div>
+
+            <div class="card card-pad">
+              <strong>Nivel de madurez estimado</strong>
+              <p style="margin-top:10px;">
+                Fase experimental con evidencia comparativa y base para selección preliminar.
+              </p>
+              <div class="trl-scale">
+                <span>1</span>
+                <span>2</span>
+                <span class="active">3</span>
+                <span class="active">4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="repositorio">
+          <h2 class="section-title">Repositorio y trazabilidad</h2>
+          <p>
+            Esta web puede complementarse con imágenes, tablas resumidas y resultados del análisis alojados en tu repositorio:
+          </p>
+          <p>
+            <a href="https://github.com/elviarlo-code/ajo-exp-2025-adaptabilidad-01" target="_blank" rel="noopener noreferrer">
+              https://github.com/elviarlo-code/ajo-exp-2025-adaptabilidad-01
+            </a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    Proyecto científico web · INIA – EEA Vista Florida · Lambayeque, Perú · 2025
+  </footer>
+
+</body>
+</html>
