@@ -414,30 +414,47 @@
       margin-top:10px;
     }
 
-    .figure-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-      margin-top:12px;
-    }
+ /* ===== FIGURAS (ESTILO PUBLICACIÓN CIENTÍFICA) ===== */
 
-    figure{
+.figure-grid{
+  display:grid;
+  grid-template-columns:1fr;   /* 👈 una figura por fila */
+  gap:32px;
+  margin-top:24px;
+}
+
+figure{
+  margin:0;
   background:#ffffff;
-  border:1px solid #dfe7ef;
+  border:1px solid #d9e3ec;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(20,34,48,.08);
+  padding:26px 26px 16px;
 }
 
-    figure img{
+figure img{
   width:100%;
-  height:360px;
+  max-width:900px;      /* 👈 controla el tamaño máximo */
+  height:auto;
   object-fit:contain;
-  padding:16px;
+  background:#f7fafc;
+  padding:12px;
+  margin:0 auto;
+  display:block;
+  border-radius:12px;
 }
 
-    figcaption{
-      padding:14px 16px 16px;
-      color:#435868;
-      font-size:.95rem;
-    }
+figcaption{
+  padding:16px 6px 6px;
+  color:#3f5566;
+  font-size:1.05rem;
+  line-height:1.6;
+}
+
+figcaption strong{
+  color:#1f4e6b;
+}
 
     .columns{
       display:grid;
@@ -910,34 +927,44 @@
           </div>
         </section>
 
-        <section id="figuras">
-          <h2 class="section-title">Figuras del proyecto</h2>
-            <div class="figure-grid">
-            <figure>
-              <img src="img/pca_scatter_cultivares.png" alt="PCA de cultivares de ajo">
-              <figcaption><strong>Figura 1.</strong> Análisis de componentes principales (PCA).</figcaption>
-            </figure>
+       <section id="figuras">
+  <h2 class="section-title">Figuras del proyecto</h2>
+  <p style="max-width:900px;">
+    Resultados gráficos del análisis agronómico y multivariado de los cultivares de ajo evaluados bajo condiciones de Lambayeque, Perú.
+  </p>
 
-            <figure>
-              <img src="img/pca_biplot_cultivares.png" alt="Biplot PCA cultivares de ajo">
-              <figcaption><strong>Figura 2.</strong> Biplot del PCA basado en medias estandarizadas por cultivar.</figcaption>
-            </figure>
+  <div class="figure-grid">
 
-            <figure>
-              <img src="img/dendrograma_cultivares.png" alt="Dendrograma de agrupamiento jerárquico">
-              <figcaption><strong>Figura 3.</strong> Dendrograma construido con distancia euclidiana y método de Ward.</figcaption>
-            </figure>
+    <figure>
+      <img src="img/figura1-pca.png" alt="PCA de cultivares de ajo">
+      <figcaption>
+        <strong>Figura 1.</strong> Análisis de componentes principales (PCA) basado en medias por cultivar.
+      </figcaption>
+    </figure>
 
-            <figure>
-              <img src="img/heatmap_cultivares.png" alt="Heatmap de variables agronómicas">
-              <figcaption><strong>Figura 4.</strong> Mapa de calor de variables estandarizadas por cultivar.</figcaption>
-            </figure>
-          </div>
+    <figure>
+      <img src="img/figura2-biplot.png" alt="Biplot PCA cultivares de ajo">
+      <figcaption>
+        <strong>Figura 2.</strong> Biplot del PCA basado en medias estandarizadas por cultivar.
+      </figcaption>
+    </figure>
 
-          <div class="info">
-            Fuente: Elaboración propia.
-          </div>
-        </section>
+    <figure>
+      <img src="img/figura3-dendrograma.png" alt="Dendrograma jerárquico">
+      <figcaption>
+        <strong>Figura 3.</strong> Dendrograma construido con distancia euclidiana y método de Ward.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/figura4-heatmap.png" alt="Heatmap variables agronómicas">
+      <figcaption>
+        <strong>Figura 4.</strong> Mapa de calor de variables agronómicas estandarizadas por cultivar.
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
 
         <section id="discusion">
           <h2 class="section-title">Discusión</h2>
